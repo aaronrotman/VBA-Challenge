@@ -85,6 +85,26 @@ Sub alphabetical_testing()
             'Add the yearly change value to the summary table in column "L"
             Range("l" & summary_index).Value = yearly_change
             
+            'Check if the yearly change was positive
+            If yearly_change > 0 Then
+                
+                'If so, set the cell background color to green
+                Range("l" & summary_index).Interior.ColorIndex = 4
+            
+            'Check if the yearly change was negative
+            ElseIf yearly_change < 0 Then
+                
+                'If so, set the cell background color to red
+                Range("l" & summary_index).Interior.ColorIndex = 3
+            
+            'Check if the yearly change was zero
+            ElseIf yearly_change = 0 Then
+                
+                'If so, set the cell background color to Blue
+                Range("l" & summary_index).Interior.ColorIndex = 5
+            
+            End If
+            
             'Calculate the percent change
             percent_change = (yearly_change / Range("C" & ticker_first).Value)
             
@@ -118,6 +138,15 @@ Sub alphabetical_testing()
         End If
         
     'Check the next row
+    Next i
+    
+    'Loop through the yearly change and percent change values in the summary table
+    For i = 2 To Range("L" & Rows.Count).End(xlUp).Row
+    
+        'If the value in each cell is greater than 0 color the cell background green
+    
+        'If the value in the cell is
+    
     Next i
 
 
