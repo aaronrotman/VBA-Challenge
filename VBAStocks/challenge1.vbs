@@ -1,7 +1,7 @@
 Sub testing()
     
     'Loop through each worksheet
-    for each ws in worksheets
+    For Each ws In Worksheets
         
         'Set up the headers for the second summary table
         ws.Range("Q2").Value = "Greatest Increase"
@@ -23,7 +23,7 @@ Sub testing()
         For i = 2 To ws.Range("m" & Rows.Count).End(xlUp).Row
             
             'Check if the current cell value is greater than max_increase
-            If ws.Range("m" & i).Value > max_increase and ws.Range("m" & i).Value <> "Error" Then
+            If ws.Range("m" & i).Value > max_increase And ws.Range("m" & i).Value <> "Error" Then
                 
                 'Set max increase equal to the current cell value
                 max_increase = ws.Range("m" & i).Value
@@ -31,7 +31,7 @@ Sub testing()
                 increase_ticker = ws.Range("k" & i).Value
             
             'Check if the current cell value is less than max_decrease
-            ElseIf ws.Range("m" & i).Value < max_decrease and ws.Range("m" & i).Value <> "Error" Then
+            ElseIf ws.Range("m" & i).Value < max_decrease And ws.Range("m" & i).Value <> "Error" Then
             
                 'Set max_decrease equal to the current cell value
                 max_decrease = ws.Range("m" & i).Value
@@ -71,7 +71,11 @@ Sub testing()
         ws.Range("s4").Value = greatest_volume
         'Add the ticker symbol of the stock with the greatest volume to summary table 2
         ws.Range("r4").Value = volume_ticker
+        
+        'Format the greatest percent increase and decrease cells in summary table 2 as percent
+        ws.Range("S2:S3").NumberFormat = "0.00%"
+       
     
-    next ws
+    Next ws
 
 End Sub
